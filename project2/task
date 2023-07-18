@@ -1,1 +1,9 @@
-keybase pgp select 9450b30c20c367c70fbf4af0ffaefeb6a510930d
+First:
+curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+Links to an external site.
+Next:
+sudo apt install ./keybase_amd64.deb
+Then:
+run_keybase
+Once Keybase is open, login. Then in the terminal do:
+keybase pgp select
