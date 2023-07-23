@@ -29,7 +29,7 @@ def no_arg():
 
     pick_four = random.sample(wordlist, 4)
 
-    pwd = ''.join(pick_four)
+    pwd = ''.join(pick_four).lower()
 
     print(pwd)
 
