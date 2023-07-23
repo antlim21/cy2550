@@ -1,1 +1,17 @@
-print("hello world")
+#!/usr/bin/env python3 
+
+
+def help_function():
+  print("hello world")
+
+
+
+def main():
+  help_function()
+
+if __name__ == "__main__":
+  main()
+
+
+
+
