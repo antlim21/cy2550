@@ -1,8 +1,9 @@
+#!/usr/bin/env python3 
 import sys
 import random
 
 def help_function():
-    print(help_message)
+  print(help_message)
 
 help_message = """
 usage: xkcdpwgen [-h] [-w WORDS] [-c CAPS] [-n NUMBERS] [-s SYMBOLS]
@@ -33,7 +34,9 @@ def no_arg():
     print(pwd)
 
 
+def main():
+  no_arg()
 
-def xkcdpwgen():
-    no_arg()
+if __name__ == "__main__":
+  main() 
 
