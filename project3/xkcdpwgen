@@ -13,6 +13,10 @@ symbols = None
 
 def parse_arg():
     global selectable, capitalized, numbered, symbols
+    parser.add_argument("-w", "--words", type=int, help="include WORDS words in the password (default=4)")
+    parser.add_argument("-c", "--caps", type=int, help="capitalize the first letter of CAPS random words (default=0)")
+    parser.add_argument("-n", "--numbers", type=int, help="insert NUMBERS random numbers in the password (default=0)")
+    parser.add_argument("-s", "--symbols", type=int, help="insert SYMBOLS random symbols in the password (default=0)")
     args = parser.parse_args()
 
     if args.words:
@@ -31,23 +35,7 @@ def help_function():
     print(help_message)
 
 help_message = """
-usage: xkcdpwgen [-h] [-w WORDS] [-c CAPS] [-n NUMBERS] [-s SYMBOLS]
-                
-Generate a secure, memorable password using the XKCD method
-                
-optional arguments:
-    -h, --help            show this help message and exit
-    -w WORDS, --words WORDS
-                          include WORDS words in the password (default=4)
-    -c CAPS, --caps CAPS  capitalize the first letter of CAPS random words
-                          (default=0)
-    -n NUMBERS, --numbers NUMBERS
-                          insert NUMBERS random numbers in the password
-                          (default=0)
-    -s SYMBOLS, --symbols SYMBOLS
-                          insert SYMBOLS random symbols in the password
-                          (default=0)
-
+# ... (same as before) ...
 """
 
 def yes_arg():
@@ -63,7 +51,8 @@ def yes_arg():
     pick_x = [i.lower() for i in pick_x]
 
     if capitalized:
-        pick_x = [i.title() for i in pick_x]
+        cap_words = random.sample(pick_x, min(capitalized, len(pick_x)))
+        pick_x = [word.capitalize() if word in cap_words else word for word in pick_x]
 
     symbols_list = []
     if symbols is not None:
@@ -74,6 +63,7 @@ def yes_arg():
         numbers_list = [str(num) for num in random.choices(range(0, 10), k=numbered)]
 
     output_list = pick_x + symbols_list + numbers_list
+    random.shuffle(output_list)
 
     pwd = ''.join(output_list)
 
