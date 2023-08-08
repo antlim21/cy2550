@@ -10,8 +10,8 @@ selectable = None
 capitalized = False
 numbered = None
 symbols = None
-symbols_list = None
-numbers_list = None
+global symbols_list = None
+global numbers_list = None
 
 def parse_arg():
   
