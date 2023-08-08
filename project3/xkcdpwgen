@@ -70,7 +70,7 @@ def yes_arg():
     if capitalized != None:
         pick_x = [i.title() for i in pick_x]
 
-    pwd = ''.join(pick_x)
+    
 
     if symbols != None:
         symbols_list = secretRandom.choices("~!@#$%^&*()_+`-=[]\{}|;:<>?,./", k = symbols)
@@ -78,9 +78,11 @@ def yes_arg():
     if numbered != None:
         numbers_list = [str(num) for num in secretRandom.choices(range(0, 10), k = numbered)]
 
-    output_list = pwd + symbols_list + numbers_list
+    output_list = pick_x + symbols_list + numbers_list
 
-    print(output_list)
+    pwd = ''.join(output_list)
+
+    print(pwd)
 
     
 
