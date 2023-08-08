@@ -67,11 +67,7 @@ def yes_arg():
     pick_x = [i.lower() for i in pick_x]
 
     if capitalized:
-        #cap_words = random.sample(pick_x, min(capitalized, len(pick_x)))
-        #pick_x = [word.capitalize() if word in cap_words else word for word in pick_x]
-
-        cap_indices = random.sample(range(choose), min(capitalized, choose))  # Randomly choose indices to capitalize
-        pick_x = [word.capitalize() if i in cap_indices else word for i, word in enumerate(pick_x)]
+        pick_x = [i.title() for i in pick_x]
 
     symbols_list = []
     if symbols is not None:
