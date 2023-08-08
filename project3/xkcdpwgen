@@ -6,11 +6,13 @@ import random
 
 parser = argparse.ArgumentParser()
 
+selectable = None
+capitalized = False
+numbered = None
+symbols = None
+
 def parse_arg():
-  selectable = None
-  capitalized = False
-  numbered = None
-  symbols = None
+  
 
   for i in range(1, len(sys.argv), 2):
     option = sys.argv[i]
