@@ -76,6 +76,10 @@ def yes_arg():
     if numbered != None:
         numbers_list = [str(num) for num in secretRandom.choices(range(0, 10), k = numbered)]
 
+    output_list = pwd + symbols_list + numbers_list
+
+    print(output_list)
+
     
 
 def no_arg():
