@@ -6,6 +6,27 @@ import random
 
 parser = argparse.ArgumentParser()
 
+def parse_arg():
+  selectable = None
+  capitalized = False
+  numbered = None
+  symbols = None
+
+  for i in range(1, len(sys.argv), 2):
+    option = sys.argv[i]
+    value = sys.argv[i+1]
+
+    if option in ["--words", "-w"]:
+        selectable = int(value)
+
+    elif option in ["--caps", "-c"]:
+        capitalized = True
+
+    elif option in ["--numbers", "-n"]:
+        numbered = int(value)
+
+    elif option in ["--symbols", "-s"]:
+        symbols = int(value)
 
 
 def help_function():
@@ -30,6 +51,31 @@ optional arguments:
                           (default=0)
 """
 
+def yes_arg():
+    wordlist = open("words.txt").read().splitlines()
+
+    choose = 0
+    if selectable == None: 
+        choose = 4
+    else:
+        choose = selectable
+
+    pick_x = random.sample(wordlist, choose)
+    pick_x = [i.lower() for i in pick_x]
+
+    if capitalized != None:
+        pick_x = [i.title() for i in pick_x]
+
+    pwd = ''.join(pick_x)
+
+    if symbols != None:
+        symbols_list = secretRandom.choices("~!@#$%^&*()_+`-=[]\{}|;:<>?,./", k = symbols)
+
+    if numbered != None:
+        numbers_list = [str(num) for num in secretRandom.choices(range(0, 10), k = numbered)]
+
+    
+
 def no_arg():
     wordlist = open("words.txt").read().splitlines()
 
@@ -43,8 +89,9 @@ def no_arg():
 def main():
   if "-h" in sys.argv or "--help" in sys.argv:
     help_function()
-  elif "-w" in sys.argv or "words" in sys.argv:
-    print("words")
+  elif len(sys.argv) > 1:
+    parse_arg()
+    yes_arg()
   else: 
     no_arg()
 
