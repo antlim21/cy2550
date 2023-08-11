@@ -13,10 +13,10 @@ symbols = None
 
 def parse_arg():
     global selectable, capitalized, numbered, symbols
-    parser.add_argument("-w", "--words", type=int, help="include WORDS words in the password (default=4)")
-    parser.add_argument("-c", "--caps", type=int, help="capitalize the first letter of CAPS random words (default=0)")
-    parser.add_argument("-n", "--numbers", type=int, help="insert NUMBERS random numbers in the password (default=0)")
-    parser.add_argument("-s", "--symbols", type=int, help="insert SYMBOLS random symbols in the password (default=0)")
+    parser.add_argument("-w", "--words", type=int)
+    parser.add_argument("-c", "--caps", type=int)
+    parser.add_argument("-n", "--numbers", type=int)
+    parser.add_argument("-s", "--symbols", type=int)
     args = parser.parse_args()
 
     if args.words:
